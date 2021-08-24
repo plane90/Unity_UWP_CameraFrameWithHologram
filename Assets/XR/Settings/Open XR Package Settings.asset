@@ -32,7 +32,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f8ec2975f18d5e479159feb34b4dc86, type: 3}
   m_Name: MixedRealityFeaturePlugin WSA
   m_EditorClassIdentifier: 
-  m_enabled: 0
+  m_enabled: 1
   nameUi: Mixed Reality Features
   version: 1.0.2
   featureIdInternal: com.microsoft.openxr.feature.hololens
@@ -55,7 +55,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f928d0d73a35f294fbe357ca17aa3547, type: 3}
   m_Name: MicrosoftHandInteraction WSA
   m_EditorClassIdentifier: 
-  m_enabled: 0
+  m_enabled: 1
   nameUi: Microsoft Hand Interaction Profile
   version: 0.0.1
   featureIdInternal: com.unity.openxr.feature.input.handtracking
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c8f1ce8139888c4ab621f6b3c8bb558, type: 3}
   m_Name: MotionControllerFeaturePlugin WSA
   m_EditorClassIdentifier: 
-  m_enabled: 0
+  m_enabled: 1
   nameUi: Motion Controller Model
   version: 1.0.2
   featureIdInternal: com.microsoft.openxr.feature.controller
@@ -447,9 +447,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a1f07dc5afe854f9f12a4194aca3fb, type: 3}
   m_Name: WSA
   m_EditorClassIdentifier: 
-  features: []
+  features:
+  - {fileID: 8008056376005229465}
+  - {fileID: 1169515264699126211}
+  - {fileID: 6271868444124530500}
+  - {fileID: 8057645965889574215}
+  - {fileID: 3382171673629573775}
+  - {fileID: -3462093302554428407}
+  - {fileID: -6416039446139945416}
+  - {fileID: -8552372508780018107}
+  - {fileID: 6603758387985673315}
+  - {fileID: -8653499096046323738}
+  - {fileID: -8275559141542354169}
+  - {fileID: -1391390505691732067}
+  - {fileID: 2900241610580676452}
+  - {fileID: 1811693952485265506}
   m_renderMode: 1
-  m_depthSubmissionMode: 0
+  m_depthSubmissionMode: 1
 --- !u!114 &-3804290360295050801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1407,7 +1421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c79c911b38743a649b1c1eddb5097202, type: 3}
   m_Name: HandTrackingFeaturePlugin WSA
   m_EditorClassIdentifier: 
-  m_enabled: 0
+  m_enabled: 1
   nameUi: Hand Tracking
   version: 1.0.2
   featureIdInternal: com.microsoft.openxr.feature.handtracking
