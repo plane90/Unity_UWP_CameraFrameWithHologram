@@ -18,35 +18,21 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
-#if ENABLE_WINMD_SUPPORT
-#endif
     float elapsed = 0f;
-    bool canDisable = false;
     private void Update()
     {
-        elapsed += Time.deltaTime;
-        if (elapsed > 10)
+        if ((elapsed += Time.deltaTime) > 10f)
         {
-            if (canDisable)
-            {
-                gameObject.SetActive(false);
-            }
+            LoggerEx.Log("Cube disappeared !");
+            gameObject.SetActive(false);
         }
     }
+
     private void OnEnable()
     {
-        Logger.Log("Hello World !");
-        try
-        {
-            canDisable = true;
-            //var tester = new MyLibWinrt.Tester();
-            //Debug.Log(tester.Test());
-        }
-        catch (Exception exepction)
-        {
-            //Debug.Log(exepction.Message);
-        }
+        LoggerEx.Log("hello");
     }
+
     //#if ENABLE_WINMD_SUPPORT
     //    private MediaCaptureVideoProfile _videoProfile;
     //    private Windows.Media.Capture.Frames.MediaFrameSourceInfo _sourceInfo;
@@ -55,17 +41,30 @@ public class Test : MonoBehaviour
     //    private MediaStreamType mediaStreamType = MediaStreamType.VideoRecord;
 
 
+    //    float elapsed = 0f;
+    //    private void Update()
+    //    {
+    //        if ((elapsed += Time.deltaTime) > 10f)
+    //        {
+    //            gameObject.SetActive(false);
+    //        }
+    //    }
+
     //    private async void OnEnable()
     //    {
     //        try
     //        {
+    //            Logger.Log("OnEnable InitVideoSource");
     //            await InitVideoSource();
+    //            Logger.Log("OnEnable InitMediaCapture");
     //            await InitMediaCapture();
+    //            Logger.Log("OnEnable StartRecording");
     //            await StartRecording();
+    //            Logger.Log("OnEnable end");
     //        }
     //        catch (Exception exepction)
     //        {
-    //            Debug.Log(exepction.Message);
+    //            Logger.Log(exepction.Message);
     //        }
 
     //    }
@@ -79,11 +78,11 @@ public class Test : MonoBehaviour
     //    {
     //        try
     //        {
-    //            Debug.Log("InitVideoSource");
+    //            Logger.Log("InitVideoSource");
     //            _videoProfile = await GetVideoProfile();
     //            if (_videoProfile == null)
     //            {
-    //                Debug.Log($"Fail::GetVideoProfile, _videoProfile is null");
+    //                Logger.Log($"Fail::GetVideoProfile, _videoProfile is null");
     //                return;
     //            }
 
@@ -97,7 +96,7 @@ public class Test : MonoBehaviour
     //        }
     //        catch (Exception e)
     //        {
-    //            Debug.Log(e.Message);
+    //            Logger.Log(e.Message);
     //        }
     //    }
 
@@ -119,7 +118,7 @@ public class Test : MonoBehaviour
     //    {
     //        try
     //        {
-    //            Debug.Log("InitMediaCapture");
+    //            Logger.Log("InitMediaCapture");
     //            _mediaCapture = new Windows.Media.Capture.MediaCapture();
     //            var initSetting = new MediaCaptureInitializationSettings()
     //            {
@@ -131,11 +130,11 @@ public class Test : MonoBehaviour
     //                SharingMode = MediaCaptureSharingMode.ExclusiveControl,
     //            };
     //            await _mediaCapture.InitializeAsync(initSetting);
-    //            Debug.Log("MediaCapture Initialized");
+    //            Logger.Log("MediaCapture Initialized");
     //        }
     //        catch (Exception e)
     //        {
-    //            Debug.Log(e.Message);
+    //            Logger.Log(e.Message);
     //        }
     //    }
 
@@ -153,15 +152,15 @@ public class Test : MonoBehaviour
     //            {
     //                Debug.Log("AddVideoEffectAsync Fail");
     //            }
-    //            Debug.Log("Effect Added !");
+    //            Logger.Log("Effect Added !");
 
     //            var encoding = Windows.Media.MediaProperties.MediaEncodingProfile.CreateMp4(Windows.Media.MediaProperties.VideoEncodingQuality.Auto);
     //            await _mediaCapture.StartRecordToStorageFileAsync(encoding, saveFile);
-    //            Debug.Log("Recording started");
+    //            Logger.Log("Recording started");
     //        }
     //        catch (Exception e)
     //        {
-    //            Debug.Log(e.Message);
+    //            Logger.Log(e.Message);
     //        }
     //    }
 
@@ -170,11 +169,11 @@ public class Test : MonoBehaviour
     //        try
     //        {
     //            await _mediaCapture.StopRecordAsync();
-    //            Debug.Log("Recording is stoped");
+    //            Logger.Log("Recording is stoped");
     //        }
     //        catch (Exception e)
     //        {
-    //            Debug.Log(e.Message);
+    //            Logger.Log(e.Message);
     //        }
     //    }
 
@@ -187,19 +186,19 @@ public class Test : MonoBehaviour
     //        public MrcVideoEffectDefinition()
     //        {
     //            Properties = new PropertySet
-    //                {
-    //                    {"StreamType", MediaStreamType.VideoRecord},
-    //                    {"HologramCompositionEnabled", true},
-    //                    {"RecordingIndicatorEnabled", true},
-    //                    {"VideoStabilizationEnabled", false},
-    //                    {"VideoStabilizationBufferLength", 0},
-    //                    {"GlobalOpacityCoefficient", 0.9f},
-    //                    {"BlankOnProtectedContent", false},
-    //                    {"ShowHiddenMesh", false},
-    //                    //{"PreferredHologramPerspective", MixedRealityCapturePerspective.PhotoVideoCamera},    // fatal error
-    //                    //{"OutputSize", 0},    // fatal error
-    //                };
+    //                    {
+    //                        {"StreamType", MediaStreamType.VideoRecord},
+    //                        {"HologramCompositionEnabled", true},
+    //                        {"RecordingIndicatorEnabled", true},
+    //                        {"VideoStabilizationEnabled", false},
+    //                        {"VideoStabilizationBufferLength", 0},
+    //                        {"GlobalOpacityCoefficient", 0.9f},
+    //                        {"BlankOnProtectedContent", false},
+    //                        {"ShowHiddenMesh", false},
+    //                        //{"PreferredHologramPerspective", MixedRealityCapturePerspective.PhotoVideoCamera},    // fatal error
+    //                        //{"OutputSize", 0},    // fatal error
+    //                    };
     //        }
-    //    //}
+    //    }
     //#endif
 }

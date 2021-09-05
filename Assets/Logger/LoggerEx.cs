@@ -6,44 +6,16 @@ using System.Net.Sockets;
 using UnityEditor;
 using UnityEngine;
 
-public class Logger : ScriptableObject
+public static class LoggerEx
 {
-    [SerializeField] private string serverIp = "127.0.0.1";
-    [SerializeField] private int serverPort = 0;
+    [SerializeField] private static string serverIp = "192.168.0.3";
+    [SerializeField] private static int serverPort = 10040;
 
     private static Socket sock;
-    private static Logger instance;
 
     private static byte[] packet = new byte[1024];
     private static MemoryStream ms;
     private static BinaryWriter bw;
-
-    public static Logger Instance
-    {
-        get
-        {
-            if (!instance)
-            {
-                var loggers = FindObjectOfType<Logger>();
-                instance = FindObjectOfType<Logger>();
-            }
-            if (!instance)
-            {
-                var loggers = Resources.FindObjectsOfTypeAll<Logger>();
-                instance = Resources.FindObjectsOfTypeAll<Logger>().FirstOrDefault();
-            }
-            return instance;
-        }
-        set
-        {
-            instance = value;
-        }
-    }
-
-    void OnDisable()
-    {
-        Disconnect();
-    }
 
     public static void Log(string logString, string stackTrace = "", LogType type = LogType.Log)
     {
@@ -86,14 +58,9 @@ public class Logger : ScriptableObject
 
     private static void InitSocketAndConnect()
     {
-        if (!Instance)
-        {
-            Debug.Log("Not Found Logger instance");
-            return;
-        }
         sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-        IPAddress ip = IPAddress.Parse(Instance.serverIp);
-        IPEndPoint ep = new IPEndPoint(ip, Instance.serverPort);
+        IPAddress ip = IPAddress.Parse(serverIp);
+        IPEndPoint ep = new IPEndPoint(ip, serverPort);
         sock.Connect(ep);
         Log($"Connected To Echo Server {ep}");
     }
