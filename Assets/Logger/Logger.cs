@@ -95,6 +95,7 @@ public class Logger : ScriptableObject
         IPAddress ip = IPAddress.Parse(Instance.serverIp);
         IPEndPoint ep = new IPEndPoint(ip, Instance.serverPort);
         sock.Connect(ep);
+        Application.quitting += Disconnect;
         Log($"Connected To Echo Server {ep}");
     }
 
